@@ -6,13 +6,14 @@ T = float(input("Enter the temperature (in Kelvin): "))
 # Constants and initial setup
 k = 1.38e-23  # Boltzmann constant
 N = 50  # Number of helium atoms
-L = ((24.2e-3 / (6e23)) * N) ** (1 / 3.0) / 22
+L = ((24.2e-3 / (6e23)) * N) ** (1 / 3.0) / 22  # Adjusting the container size to avoid overlap with molecule size.
 m, size = 4e-3 / (6e23), 310e-12  # Mass and size of helium atoms
 L_size = L - size
-t, dt = 0, 0.5e-13
+t, dt = 0, 0.5e-13  # t is the initial time, dt is the time step (0.5E-13 seconds).
 vrms = (3 * k * T / m) ** 0.5  # Calculate vrms based on the entered temperature
 
-scene = canvas(width=800, height=800, background=vector(0.1, 0.2, 0.1))
+# initialization
+scene = canvas(width=800, height=800, background=vector(0.1, 0.2, 0.1))  # Create a 3D simulation window (800x800 pixels) with a dark green background
 
 container = box(length=2 * L, height=2 * L, width=2 * L, opacity=0.2, color=color.yellow)
 
